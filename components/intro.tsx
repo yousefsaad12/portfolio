@@ -64,8 +64,8 @@ export default function Intro() {
       >
         <span className="font-bold">Hello, I'm Yousef.</span> I'm a{" "}
         <span className="font-bold">Backend developer</span> {" "} I enjoy building <br/>
-        <span className="italic">Web Api & Web Projects</span>. My focus is{" "}
-        <span className="underline">.NET (.NET Api)</span>.
+        <span className="italic">Web Api & Web Projects</span>. My focus is{" "}<br/>
+        <span className="underline"> .NET (.NET Api)</span>.
       </motion.h1>
 
       <motion.div
