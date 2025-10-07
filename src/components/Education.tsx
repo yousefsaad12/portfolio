@@ -33,7 +33,7 @@ const Education: React.FC = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.8, delay: 0.2 }}
               >
-                Experience
+                Education
               </motion.h2>
             </div>
           </motion.div>
