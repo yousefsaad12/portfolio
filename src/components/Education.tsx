@@ -1,5 +1,4 @@
 import React from "react";
-import { ArrowUpRight } from "lucide-react";
 import { motion } from "framer-motion";
 import { educations } from "../data/education";
 
