@@ -9,7 +9,6 @@ import {
 import { navItems } from "../data/navigation";
 import yousefImage from "../assets/yousef.jpeg";
 
-
 const Navbar: React.FC = () => {
   const buttonRef = useRef<HTMLAnchorElement>(null);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -19,17 +18,14 @@ const Navbar: React.FC = () => {
   const opacity = useTransform(scrollY, [0, 100], [1, 0.8]);
   const scale = useTransform(scrollY, [0, 100], [1, 0.95]);
 
-
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
       setMousePosition({ x: e.clientX, y: e.clientY });
     };
 
-
     window.addEventListener("mousemove", handleMouseMove);
     return () => window.removeEventListener("mousemove", handleMouseMove);
   }, []);
-
 
   useEffect(() => {
     if (isImageOpen) {
@@ -39,33 +35,26 @@ const Navbar: React.FC = () => {
     }
   }, [isImageOpen]);
 
-
   const handleMouseMove = (e: React.MouseEvent<HTMLAnchorElement>) => {
     if (!buttonRef.current) return;
-
 
     const rect = buttonRef.current.getBoundingClientRect();
     const x = e.clientX - rect.left - rect.width / 2;
     const y = e.clientY - rect.top - rect.height / 2;
 
-
     const moveX = x * 0.35;
     const moveY = y * 0.35;
 
-
     const rotation = Math.atan2(y, x) * (180 / Math.PI) * 0.1;
-
 
     buttonRef.current.style.transform = `translate(${moveX}px, ${moveY}px) scale(1.08) rotate(${rotation}deg)`;
   };
-
 
   const handleMouseLeave = () => {
     if (buttonRef.current) {
       buttonRef.current.style.transform = "translate(0px, 0px) scale(1)";
     }
   };
-
 
   const scrollToSection = (href: string) => {
     if (href.startsWith("#")) {
@@ -75,7 +64,6 @@ const Navbar: React.FC = () => {
       }
     }
   };
-
 
   const cursorTrail = Array.from({ length: 5 }, (_, i) => (
     <motion.div
@@ -98,14 +86,12 @@ const Navbar: React.FC = () => {
     />
   ));
 
-
   return (
     <>
       {/* Floating cursor trail */}
       <div className="fixed inset-0 pointer-events-none z-50">
         {cursorTrail}
       </div>
-
 
       {/* Fullscreen Image Modal */}
       <AnimatePresence>
@@ -125,7 +111,6 @@ const Navbar: React.FC = () => {
               <X size={32} />
             </button>
 
-
             {/* Fullscreen Image */}
             <motion.img
               initial={{ scale: 0.8 }}
@@ -139,7 +124,6 @@ const Navbar: React.FC = () => {
           </motion.div>
         )}
       </AnimatePresence>
-
 
       <motion.nav
         className="w-full backdrop-blur-sm mt-4 sm:mt-6 md:mt-8 relative z-40"
@@ -170,7 +154,6 @@ const Navbar: React.FC = () => {
                 />
               </div>
 
-
               {/* Name */}
               <motion.span
                 className="text-xs sm:text-sm text-neutral-200 text-center sm:text-left"
@@ -194,88 +177,7 @@ const Navbar: React.FC = () => {
                 </motion.span>
                 .
               </motion.span>
-
-
-              {/* Spotify Music Pill */}
-              <motion.a
-                href="https://open.spotify.com/track/6Yk3zs9ZAYaOFBxZ8FSyBF?si=3a47afaa187745e9"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="z-50 flex items-center gap-2 rounded-full border border-neutral-800 bg-neutral-950/80 px-2 sm:px-3 py-1.5 sm:py-2.5 text-xs backdrop-blur-sm transition-all duration-300 hover:bg-neutral-900 hover:pr-4 sm:hover:pr-6 group relative overflow-hidden"
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.6, delay: 0.6 }}
-                whileHover={{
-                  scale: 1.05,
-                  boxShadow: "0 10px 25px rgba(0, 0, 0, 0.3)",
-                }}
-                whileTap={{ scale: 0.95 }}
-              >
-                {/* Animated background */}
-                <motion.div
-                  className="absolute inset-0 bg-gradient-to-r from-green-500/10 to-cyan-500/10 rounded-full"
-                  initial={{ scale: 0, opacity: 0 }}
-                  whileHover={{ scale: 1, opacity: 1 }}
-                  transition={{ duration: 0.3 }}
-                />
-
-
-                {/* Spotify Icon Animation */}
-                <div className="relative flex size-5 sm:size-6 shrink-0 items-center justify-center">
-                  <motion.div
-                    className="absolute inset-0 rounded-full bg-gradient-to-tr from-neutral-800 via-neutral-900 to-neutral-800"
-                    animate={{ rotate: 360 }}
-                    transition={{
-                      duration: 3,
-                      repeat: Infinity,
-                      ease: "linear",
-                    }}
-                  />
-                  <motion.div
-                    className="absolute inset-1 rounded-full border-t border-neutral-800"
-                    animate={{ rotate: -360 }}
-                    transition={{
-                      duration: 2,
-                      repeat: Infinity,
-                      ease: "linear",
-                    }}
-                  />
-                  <div className="absolute inset-[8px] sm:inset-[10px] rounded-full border-[2px] border-neutral-950 bg-neutral-900"></div>
-                  <motion.div
-                    whileHover={{ rotate: 360 }}
-                    transition={{ duration: 0.6 }}
-                  >
-                    <Music
-                      size={10}
-                      className="relative text-[#1DB954] sm:text-[12px]"
-                    />
-                  </motion.div>
-                </div>
-
-
-                {/* Song Info */}
-                <div className="flex flex-col justify-center overflow-hidden">
-                  <div className="flex items-center gap-1 sm:gap-2">
-                    <motion.div
-                      className="truncate font-medium text-neutral-200 text-xs"
-                      whileHover={{ color: "#ffffff" }}
-                    >
-                      Marbah
-                    </motion.div>
-                    <span className="shrink-0 text-neutral-500 text-xs">
-                      by
-                    </span>
-                    <motion.div
-                      className="truncate text-neutral-400 text-xs"
-                      whileHover={{ color: "#a3a3a3" }}
-                    >
-                      Shabjdeed
-                    </motion.div>
-                  </div>
-                </div>
-              </motion.a>
             </motion.div>
-
 
             {/* Right Side - Navigation + Button */}
             <motion.div
@@ -312,7 +214,6 @@ const Navbar: React.FC = () => {
                         transition={{ duration: 0.3 }}
                       />
 
-
                       <span className="flex items-center gap-1 sm:gap-1.5 text-xs sm:text-sm text-neutral-400 hover:text-white transition-all duration-500 relative z-10">
                         <motion.div
                           whileHover={{ rotate: 360, scale: 1.2 }}
@@ -335,7 +236,6 @@ const Navbar: React.FC = () => {
                 })}
               </div>
 
-
               {/* Get in Touch Button */}
               <motion.a
                 ref={buttonRef}
@@ -345,7 +245,7 @@ const Navbar: React.FC = () => {
                 onMouseLeave={handleMouseLeave}
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.6, delay: 1 }}
+                transition={{ duration: 0.1, delay: 0.1 }}
                 whileHover={{
                   scale: 1.05,
                   boxShadow: "0 10px 25px rgba(34, 197, 94, 0.3)",
@@ -357,7 +257,7 @@ const Navbar: React.FC = () => {
                   className="absolute inset-0 bg-gradient-to-r from-green-500/20 to-cyan-500/20 rounded-full"
                   initial={{ scale: 0, opacity: 0 }}
                   whileHover={{ scale: 1, opacity: 1 }}
-                  transition={{ duration: 0.3 }}
+                  transition={{ duration: 0.1 }}
                 />
                 <span className="relative z-10">Get in Touch</span>
               </motion.a>
@@ -368,6 +268,5 @@ const Navbar: React.FC = () => {
     </>
   );
 };
-
 
 export default Navbar;

@@ -15,7 +15,7 @@ function App() {
         className="min-h-screen bg-black relative overflow-hidden"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 1 }}
+        transition={{ duration: 0.3 }}
       >
         {/* Animated background particles */}
         <div className="fixed inset-0 pointer-events-none">
@@ -48,7 +48,7 @@ function App() {
           <motion.main
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            transition={{ duration: 0.4, delay: 0.2 }}
           >
             <Hero />
             <Employment />
