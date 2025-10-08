@@ -232,7 +232,7 @@ const Hero: React.FC = () => {
                     onMouseLeave={handleMouseLeave}
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.6, delay: 1 }}
+                    transition={{ duration: 0.2, delay: 0.1}}
                     whileHover={{
                       scale: 1.05,
                       boxShadow: "0 10px 25px rgba(34, 197, 94, 0.3)",
@@ -243,7 +243,7 @@ const Hero: React.FC = () => {
                       className="absolute inset-0 bg-gradient-to-r from-green-500/20 to-cyan-500/20 rounded-full"
                       initial={{ scale: 0, opacity: 0 }}
                       whileHover={{ scale: 1, opacity: 1 }}
-                      transition={{ duration: 0.3 }}
+                      transition={{ duration: 0.2 }}
                     />
                     <FileText size={14} className="relative z-10" />
                     <span className="relative z-10">CV</span>
