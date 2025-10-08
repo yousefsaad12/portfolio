@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect } from "react";
-import { Music, X } from "lucide-react";
+import { X } from "lucide-react";
 import {
   motion,
   useScroll,
